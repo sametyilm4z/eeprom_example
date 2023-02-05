@@ -95,9 +95,6 @@ int main(void)
   for(int i=0; i<512; i++){
 	  EEPROM_PageErase(i);
   }
-
-//uint8_t dataWrite[11] = "ABC def 123";
-
   HAL_I2C_Mem_Write(&hi2c1, 0xA0, (3<<6), 2, dataWrite, 11, 10);
   HAL_Delay(5);
   HAL_I2C_Mem_Read(&hi2c1, 0xA0, (3<<6), 2, dataRead, 64, 10);
@@ -105,7 +102,6 @@ int main(void)
   EEPROM_Write(3, 11, dataWrite, 11);
   HAL_Delay(5);
   EEPROM_Read(3,0,dataRead,30);
-
 
   /* USER CODE END 2 */
 
